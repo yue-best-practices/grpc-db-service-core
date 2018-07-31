@@ -89,8 +89,9 @@ const multiGet=async (call,callback)=>{
     let dataSource=JSON.parse(call.request.getDatasource());
     let table=JSON.parse(call.request.getTable());
     let id=JSON.parse(call.request.getId());
+    let field=JSON.parse(call.request.getField());
     let database=getDataBase(dataSource,table);
-    let res=await Method.multiGet(database,table,id);
+    let res=await Method.multiGet(database,table,id,field);
     res=JSON.stringify(res);
     let response=new messages.multiGetResponse();
     response.setResult(res);
