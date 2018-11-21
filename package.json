@@ -1,6 +1,6 @@
 {
   "name": "grpc-db-service-core",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "node dbservice",
   "main": "index.js",
   "scripts": {
