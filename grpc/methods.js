@@ -16,7 +16,14 @@ const get=async (call,callback)=>{
     let table=JSON.parse(call.request.getTable());
     let paras=JSON.parse(call.request.getParas());
     let database=getDataBase(dataSource,table);
-    let res=await Method.get(database,table,paras);
+    let res=null;
+
+    try{
+        res=await Method.get(database,table,paras);
+    }catch (e){
+        console.error(e)
+    }
+
     res=JSON.stringify(res);
     let response=new messages.getResponse();
     response.setResult(res);
@@ -29,7 +36,12 @@ const getOne=async (call,callback)=>{
     let where=JSON.parse(call.request.getWhere());
     let paras=JSON.parse(call.request.getParas());
     let database=getDataBase(dataSource,table);
-    let res=await Method.getOne(database,table,where,paras);
+    let res=null;
+    try{
+        res=await Method.getOne(database,table,where,paras);
+    }catch (e){
+        console.error(e)
+    }
     res=JSON.stringify(res);
     let response=new messages.getOneResponse();
     response.setResult(res);
@@ -41,7 +53,12 @@ const list=async(call,callback)=>{
     let table=JSON.parse(call.request.getTable());
     let where=JSON.parse(call.request.getWhere());
     let database=getDataBase(dataSource,table);
-    let res=await Method.list(database,table,where);
+    let res=null;
+    try{
+        res=await await Method.list(database,table,where);
+    }catch (e){
+        console.error(e)
+    }
     res=JSON.stringify(res);
     let response=new messages.listResponse();
     response.setResult(res);
@@ -54,7 +71,12 @@ const save=async (call,callback)=>{
     let where=JSON.parse(call.request.getWhere());
     let paras=JSON.parse(call.request.getParas());
     let database=getDataBase(dataSource,table);
-    let res=await Method.save(database,table,where,paras);
+    let res=null;
+    try{
+        res=await Method.save(database,table,where,paras);
+    }catch (e){
+        console.error(e)
+    }
     res=JSON.stringify(res);
     let response=new messages.saveResponse();
     response.setResult(res);
@@ -67,7 +89,12 @@ const update=async(call,callback)=>{
     let where=JSON.parse(call.request.getWhere());
     let paras=JSON.parse(call.request.getParas());
     let database=getDataBase(dataSource,table);
-    let res=await Method.update(database,table,where,paras);
+    let res=false;
+    try{
+        res=await Method.update(database,table,where,paras);
+    }catch (e){
+        console.error(e)
+    }
     let response=new messages.updateResponse();
     response.setResult(res);
     callback(null,response);
@@ -78,7 +105,12 @@ const del=async (call,callback)=>{
     let table=JSON.parse(call.request.getTable());
     let id=JSON.parse(call.request.getId());
     let database=getDataBase(dataSource,table);
-    let res=await Method.del(database,table,id);
+    let res=false;
+    try{
+        res=await Method.del(database,table,id);
+    }catch (e){
+        console.error(e)
+    }
     let response=new messages.delResponse();
     response.setResult(res);
     callback(null,response);
@@ -91,7 +123,12 @@ const multiGet=async (call,callback)=>{
     let id=JSON.parse(call.request.getId());
     let field=JSON.parse(call.request.getField());
     let database=getDataBase(dataSource,table);
-    let res=await Method.multiGet(database,table,id,field);
+    let res=null;
+    try{
+        res=await Method.multiGet(database,table,id,field);
+    }catch (e){
+        console.error(e)
+    }
     res=JSON.stringify(res);
     let response=new messages.multiGetResponse();
     response.setResult(res);
@@ -106,7 +143,12 @@ const toOne=async (call,callback)=>{
     let paras=JSON.parse(call.request.getParas());
     let result=JSON.parse(call.request.getResult());
     let database=getDataBase(dataSource,table);
-    let res=await Method.toOne(database,table,where,paras,result);
+    let res=null;
+    try{
+        res=await Method.toOne(database,table,where,paras,result);
+    }catch (e){
+        console.error(e)
+    }
     res=JSON.stringify(res);
     let response=new messages.toOneResponse();
     response.setResult(res);
@@ -120,7 +162,12 @@ const toMany=async(call,callback)=>{
     let paras=JSON.parse(call.request.getParas());
     let result=JSON.parse(call.request.getResult());
     let database=getDataBase(dataSource,table);
-    let res=await Method.toMany(database,table,where,paras,result);
+    let res=null;
+    try{
+        res=await Method.toMany(database,table,where,paras,result);
+    }catch (e){
+        console.error(e)
+    }
     res=JSON.stringify(res);
     let response=new messages.toManyResponse();
     response.setResult(res);
@@ -132,7 +179,12 @@ const count=async(call,callback)=>{
     let table=JSON.parse(call.request.getTable());
     let where = JSON.parse(call.request.getWhere());
     let database=getDataBase(dataSource,table);
-    let res=await Method.count(database,table,where);
+    let res=null;
+    try{
+        res=await Method.count(database,table,where);
+    }catch (e){
+        console.error(e)
+    }
     res=JSON.stringify(res);
     let response=new messages.countResponse();
     response.setResult(res);
@@ -145,7 +197,12 @@ const sum=async(call,callback)=>{
     let where = JSON.parse(call.request.getWhere());
     let field = JSON.parse(call.request.getField());
     let database=getDataBase(dataSource,table);
-    let res=await Method.sum(database,table,where,field);
+    let res=null;
+    try{
+        res=await Method.sum(database,table,where,field);
+    }catch (e){
+        console.error(e)
+    }
     res=JSON.stringify(res);
     let response=new messages.sumResponse();
     response.setResult(res);
