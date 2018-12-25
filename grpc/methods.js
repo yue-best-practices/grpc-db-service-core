@@ -217,7 +217,7 @@ const query=async(call,callback)=>{
     if(!dataSource)
         return res;
     try{
-        res=await await Method.query(rawQuery,where);
+        res=await await Method.query(dataSource,rawQuery,where);
     }catch (e){
         console.error(e)
     }
