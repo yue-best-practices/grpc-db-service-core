@@ -14,7 +14,7 @@
   "dependencies": {
     "google-protobuf": "^3.6.0",
     "grpc": "^1.12.4",
-    "grpc-db-service-pb": "0.0.3",
+    "grpc-db-service-pb": "0.0.5",
     "mysql2": "^1.5.3",
     "sequelize": "^4.37.6",
     "yue-asyncall": "0.0.1",

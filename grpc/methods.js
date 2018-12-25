@@ -209,6 +209,24 @@ const sum=async(call,callback)=>{
     callback(null,response);
 };
 
+const query=async(call,callback)=>{
+    let dataSource=JSON.parse(call.request.getDatasource());
+    let where=JSON.parse(call.request.getWhere());
+    let rawQuery=JSON.parse(call.request.getRawquery());
+    let res=null;
+    if(!dataSource)
+        return res;
+    try{
+        res=await await Method.query(rawQuery,where);
+    }catch (e){
+        console.error(e)
+    }
+    res=JSON.stringify(res);
+    let response=new messages.queryResponse();
+    response.setResult(res);
+    callback(null,response);
+};
+
 module.exports={
-    get,getOne,list,save,update,toOne,toMany,multiGet,count,sum,del
+    get,getOne,list,save,update,toOne,toMany,multiGet,count,sum,del,query
 };
